@@ -13,7 +13,13 @@ import { FilterByCategoryService } from '../services/products/filters/filter-by-
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+  products: {
+    isLoading: boolean;
+    data: Product[];
+  } = {
+    isLoading: true,
+    data: [],
+  };
   constructor(
     private productsService: ProductsService,
     private categoriesService: FilterByCategoryService,
@@ -28,7 +34,10 @@ export class ProductListComponent implements OnInit {
   }
   getProducts() {
     this.productsService.products.subscribe((res) => {
-      this.products = res;
+      this.products = {
+        isLoading: false,
+        data: res,
+      };
       console.log(res);
     });
   }

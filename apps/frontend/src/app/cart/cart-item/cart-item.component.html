@@ -1,0 +1,13 @@
+<div class="cart-item card">
+  <img [src]="cartItem.thumbnail" />
+  <div class="card-body">
+    <p class="card-title">{{ cartItem.title }}</p>
+    <p class="card-text">Price: {{ cartItem.price }}</p>
+    <div class="card-bottom-buttons">
+      <button class="btn btn-primary btn-sm" (click)="handleRemove()">
+        remove
+      </button>
+      <button class="btn btn-primary btn-sm" (click)="handleBuy()">buy</button>
+    </div>
+  </div>
+</div>

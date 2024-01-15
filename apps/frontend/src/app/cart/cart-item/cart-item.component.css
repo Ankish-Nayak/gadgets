@@ -1,0 +1,29 @@
+.cart-item {
+  display: flex;
+}
+
+.cart-item img {
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}

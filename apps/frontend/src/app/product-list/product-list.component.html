@@ -1,6 +1,13 @@
 <div class="products">
+  <div
+    class="spinner-border text-primary"
+    role="status"
+    *ngIf="products.isLoading"
+  >
+    <span class="sr-only"></span>
+  </div>
   <app-product
-    *ngFor="let product of products"
+    *ngFor="let product of products.data"
     [product]="product"
   ></app-product>
 </div>

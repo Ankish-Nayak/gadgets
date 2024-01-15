@@ -1,1 +1,10 @@
-
+nav i {
+  font-size: 20px;
+  margin: 0px 20px;
+}
+nav span {
+  font-size: 10px;
+}
+nav {
+  padding: 0px 50px;
+}

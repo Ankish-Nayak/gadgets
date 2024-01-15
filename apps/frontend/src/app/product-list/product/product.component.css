@@ -1,0 +1,19 @@
+.card {
+  width: 450px;
+  height: 500px;
+  margin: 5px 10px;
+}
+.card img {
+  width: 290px;
+  height: 240px;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.product-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

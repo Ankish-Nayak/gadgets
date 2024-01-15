@@ -20,5 +20,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0-rc.2"
+  }
 }

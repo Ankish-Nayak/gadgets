@@ -1,0 +1,98 @@
+.product-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  /* height: 500px; */
+}
+
+.product-outlet {
+  border: 1px solid black;
+  padding: 4px;
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-outlet img {
+  height: 400px;
+  width: 500px;
+}
+
+.card {
+  width: 500px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+.card-services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-services i {
+  font-size: 30px;
+}
+
+.card-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card-purchases {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-purchase-count,
+.card-add-to-cart {
+  display: flex;
+  width: max-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-purchases i {
+  margin: 0px 5px;
+  font-size: 20px;
+}
+
+.card-offers {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-offers-body {
+  display: flex;
+  flex-direction: row;
+}
+.card-offer {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid whitesmoke;
+}
+.card-offer-title {
+  font-weight: 700;
+}

@@ -1,0 +1,83 @@
+<div class="product-container">
+  <div class="product">
+    <div class="product-outlet">
+      @if (images) {
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let image of images">
+            <div class="picsum-img-wrapper">
+              <img [src]="image" alt="Random first slide" />
+            </div>
+            <div class="carousel-caption">
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      }
+    </div>
+
+    <div class="product-detail">
+      <div class="card">
+        <div class="card-body">
+          <h4>{{ product.title }}</h4>
+          <div class="d-flex">
+            <span>{{ product.rating | number: "1.0-1" }}</span
+            ><ngb-rating [rate]="product.rating" [readonly]="true" [max]="5" />
+            <span style="padding-left: 5px">
+              <a href="#" class="">{{ 1000 | number: "1.0-0" }} ratings</a>
+            </span>
+          </div>
+          <h5 class="card-text">
+            {{ product.description }}
+          </h5>
+          <div class="d-flex justify-content-between">
+            <p class="card-text">Price: {{ product.price | currency }}</p>
+            <p class="card-text text-danger">
+              Discount: {{ product.discountPercentage }}%
+            </p>
+          </div>
+          <p class="card-text">Stock available: {{ product.stock }}</p>
+          <div class="card-purchases">
+            <div class="card-add-to-cart">
+              Add to cart:
+              <i class="bi bi-dash-circle" (click)="decrement()"></i>
+              {{ selectCount }}
+              <i class="bi bi-plus-circle-fill" (click)="increment()"></i>
+            </div>
+            <div class="card-purchase-count">
+              Purchase count:
+              <i class="bi bi-dash-circle" (click)="decrement()"></i>
+              {{ purchaseCount }}
+              <i class="bi bi-plus-circle-fill" (click)="increment()"></i>
+            </div>
+          </div>
+          <hr />
+          <div class="card-offers">
+            <h6>Offers</h6>
+            <div class="card-offers-body">
+              <div class="card-offer" *ngFor="let cardOffer of cardOffers">
+                <p class="card-offer-title">
+                  {{ cardOffer.title }}
+                </p>
+                <p class="card-offer-desciption">
+                  {{ cardOffer.description.substring(0, 30) }}...
+                </p>
+                <p class="card-offers-footer">
+                  <a href="#">{{ cardOffer.offersCount }} offers</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="card-services">
+            <div class="card-service" *ngFor="let cardService of cardServices">
+              <i [class]="cardService.class"></i
+              ><span>{{ cardService.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<i class="fa-solid fa-medal"></i>

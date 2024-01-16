@@ -41,4 +41,14 @@ export class ProductListComponent implements OnInit {
       console.log(res);
     });
   }
+
+  getRandomPurchasedCount() {
+    // Generate a random decimal between 0 (inclusive) and 1 (exclusive)
+    const randomDecimal = Math.random();
+
+    // Scale the random decimal to the desired range (1 to 10000)
+    const randomNumber = Math.floor(randomDecimal * 10000) + 1;
+
+    return randomNumber.toString();
+  }
 }

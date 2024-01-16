@@ -4,6 +4,7 @@ import { ProductsService } from '../services/products/products.service';
 import { CommonModule } from '@angular/common';
 import { FilterByCategoryService } from '../services/products/filters/filter-by-category.service';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from '../services/cart/cart.service';
 
 // TODO: make variable to render amount or cart item to display on cart badge.
 // TODO: make separte component for showing complete detail about the product.
@@ -28,11 +29,20 @@ export class NavbarComponent implements OnInit {
   };
   selectedCategory: string | null = null;
   profileLinks = ['profile', 'orders', 'delivered', 'track orders'];
+  cartQuantity: number = 0;
   constructor(
     private productsService: ProductsService,
     public categoriesService: FilterByCategoryService,
+    private cartService: CartService,
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartService.getCart(1);
+    this.cartService.cartSource$.subscribe((res) => {
+      if (res) {
+        this.cartQuantity = res.products.length;
+      }
+    });
+  }
   fetchCategories(e: MouseEvent) {
     e.preventDefault();
     this.productsService.getAllProductsCategories().subscribe((res) => {

@@ -10,7 +10,7 @@
     <li class="list-group-item">
       <div class="d-flex container-fluid justify-content-between">
         <p>Quantity: {{ cart.totalProducts }}</p>
-        <p>Total: ${{ cart.total }}</p>
+        <p>Total: {{ cart.total | currency }}</p>
       </div>
 
       <div class="d-flex container-fluid justify-content-end">

@@ -25,12 +25,15 @@ export class CartComponent implements OnInit {
   cart!: Cart;
   constructor(private cartService: CartService) {}
   ngOnInit(): void {
-    this.cartService.getCart(1).subscribe((res) => {
-      this.cart = res;
-      this.products = {
-        isLoading: false,
-        data: res.products,
-      };
+    this.cartService.getCart(1);
+    this.cartService.cart.subscribe((res) => {
+      if (res !== null) {
+        this.cart = res;
+        this.products = {
+          isLoading: false,
+          data: res.products,
+        };
+      }
     });
   }
 }

@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.card:hover {
+  border: 1px solid black;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
@@ -26,4 +30,8 @@
   justify-content: space-between;
   width: 80%;
   margin: 0 auto;
+}
+
+.card i {
+  padding: 0px 5px;
 }

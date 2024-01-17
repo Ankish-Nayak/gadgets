@@ -5,11 +5,18 @@ import { ProductsService } from '../services/products/products.service';
 import { CommonModule } from '@angular/common';
 import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { randomNumber } from './randomNumber';
+import { ProductOutletComponent } from './product-outlet/product-outlet.component';
+import { aboutThisItem, cardOffers, cardServices } from './mock-data';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, NgbCarouselModule, NgbRatingModule],
+  imports: [
+    CommonModule,
+    NgbCarouselModule,
+    NgbRatingModule,
+    ProductOutletComponent,
+  ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
@@ -24,50 +31,14 @@ export class ProductDetailComponent implements OnInit {
     title: string;
     description: string;
     offersCount: number;
-  }[] = [
-    {
-      title: 'NoCostEmi',
-      description:
-        'Lorem ipsum dolor sit amet, qui minim labore adipisicing mini sint cillum sint consectetur cupidatat',
-      offersCount: randomNumber(5),
-    },
-    {
-      title: 'NoCostEmi',
-      description:
-        'Lorem ipsum dolor sit amet, qui minim labore adipisicing mini sint cillum sint consectetur cupidatat',
-
-      offersCount: randomNumber(5),
-    },
-    {
-      title: 'NoCostEmi',
-      description:
-        'Lorem ipsum dolor sit amet, qui minim labore adipisicing mini sint cillum sint consectetur cupidatat',
-
-      offersCount: randomNumber(5),
-    },
-  ];
+  }[] = cardOffers;
 
   cardServices: {
     class: string;
     description: string;
-  }[] = [
-    {
-      class: 'bi bi-truck',
-      description: 'delivered with 7 days',
-    },
-    {
-      class: 'bi bi-award',
-      description: 'one year warrenty',
-    },
-    {
-      class: 'bi bi-credit-card-2-front',
-      description: 'pay on delivery',
-    },
-    {
-      class: 'bi bi-truck',
-      description: 'delivered with 7 days',
-    },
-  ];
+  }[] = cardServices;
+
+  aboutThisItem: string[] = aboutThisItem;
   constructor(
     private productsService: ProductsService,
     private route: ActivatedRoute,

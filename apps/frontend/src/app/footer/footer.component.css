@@ -1,0 +1,26 @@
+.footer-links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+  background: black;
+  color: whitesmoke;
+  padding: 50px;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+.footer-links a {
+  text-decoration: none;
+
+  color: whitesmoke;
+}
+
+.back-to-top {
+  cursor: pointer;
+  width: 100%;
+  background: #181717;
+  color: whitesmoke;
+  text-align: center;
+  padding: 10px;
+}

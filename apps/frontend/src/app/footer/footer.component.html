@@ -1,0 +1,30 @@
+<div>
+  <div class="back-to-top" (click)="backToTop()">back to top</div>
+  <div class="footer-links">
+    <div class="footer-link-group">
+      <ul>
+        <h6>Get to Know Us</h6>
+        <li *ngFor="let text of getToKnowUs">
+          <a href="#">{{ text }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-link-group">
+      <ul>
+        <h6>Connect with Us</h6>
+        <li *ngFor="let text of connectWithUs">
+          <a href="#">{{ text }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-link-group">
+      <ul>
+        <h6>Make Money with Us</h6>
+        <li *ngFor="let text of makeMoneyWithUs">
+          <a href="#">{{ text }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

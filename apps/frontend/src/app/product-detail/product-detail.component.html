@@ -2,7 +2,7 @@
   <div class="product">
     <div class="product-outlet">
       @if (images) {
-        <ngb-carousel>
+        <ngb-carousel class="product-outlet-carousel">
           <ng-template ngbSlide *ngFor="let image of images">
             <div class="picsum-img-wrapper">
               <img [src]="image" alt="Random first slide" />

@@ -22,6 +22,10 @@
   text-decoration: none;
   color: inherit;
 }
+
+.card a {
+  text-decoration-line: none;
+}
 /**/
 .card-text a:hover {
   color: blue;

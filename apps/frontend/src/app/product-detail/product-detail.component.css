@@ -17,6 +17,11 @@
   width: 510px;
 }
 
+.product-outlet-carousel {
+  position: sticky;
+  top: 50px;
+}
+
 .product-outlet img {
   height: 400px;
   width: 500px;

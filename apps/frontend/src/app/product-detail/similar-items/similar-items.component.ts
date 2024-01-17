@@ -28,7 +28,7 @@ export class SimilarItemsComponent implements OnInit, OnChanges {
   items!: Product[];
   displayItems: Product[] = [];
   left: number = 0;
-  right: number = 0;
+  right: number = 4;
   span: number = 4;
   totalPages: number = 0;
   constructor(private productServices: ProductsService) {}
@@ -51,8 +51,20 @@ export class SimilarItemsComponent implements OnInit, OnChanges {
         }
         console.log(this.category, res);
         this.totalPages = this.items.length;
+        this.render();
       });
   }
-  moveLeft() {}
+  render() {
+    this.displayItems = [];
+    for (let i = this.left; i <= this.right; ++i) {
+      this.displayItems.push(this.items[i]);
+    }
+  }
+  moveLeft() {
+    if (this.left > 0) {
+      // this.left = ;
+    } else {
+    }
+  }
   moveRight() {}
 }

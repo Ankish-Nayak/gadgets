@@ -3,14 +3,16 @@
     <h6>Similar items</h6>
   </div>
   <div class="similar-items-body">
-    <div (click)="moveLeft()">left</div>
-    <div class="card" *ngFor="let item of items">
+    <div (click)="moveLeft()"><i class="bi bi-caret-left-square"></i></div>
+    <div class="card" *ngFor="let item of displayItems">
       <img [src]="item.thumbnail" />
       <div class="card-body">
         <div>
           <h6 class="card-title">
-            <a href="#" [routerLink]="['product', item.id]">{{
-              item.description
+            <a href="#" [routerLink]="['', 'product', item.id]">{{
+              item.description.length > 70
+                ? item.description
+                : item.description.substring(0, 70) + "..."
             }}</a>
           </h6>
         </div>
@@ -26,6 +28,6 @@
         </div>
       </div>
     </div>
-    <div (click)="moveRight()"></div>
+    <div (click)="moveRight()"><i class="bi bi-caret-right-square"></i></div>
   </div>
 </div>

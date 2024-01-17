@@ -1,6 +1,8 @@
 .similar-items-body {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   width: max-content;
 }
@@ -8,6 +10,17 @@
   margin-left: 300px;
 }
 
+.similar-items i {
+  font-size: 30px;
+  padding: 0px 50px;
+  cursor: pointer;
+}
+
+i:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+  cursor: pointer; /* Add a pointer cursor for interaction */
+  transition: box-shadow 0.3s ease; /* Add a smooth transition effect */
+}
 .similar-items a {
   text-decoration-line: none;
 }

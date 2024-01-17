@@ -1,12 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../models/product';
 import { ProductsService } from '../services/products/products.service';
-import { CommonModule } from '@angular/common';
-import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { randomNumber } from './randomNumber';
-import { ProductOutletComponent } from './product-outlet/product-outlet.component';
 import { aboutThisItem, cardOffers, cardServices } from './mock-data';
+import { SimilarItemsComponent } from './similar-items/similar-items.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,7 +14,7 @@ import { aboutThisItem, cardOffers, cardServices } from './mock-data';
     CommonModule,
     NgbCarouselModule,
     NgbRatingModule,
-    ProductOutletComponent,
+    SimilarItemsComponent,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',

@@ -56,4 +56,9 @@ export class ProductsService implements OnInit {
   getAllProductsCategories() {
     return this.httpClient.get<string[]>(`${this.BASE_URL}/categories`);
   }
+  getProductByCategory(category: string) {
+    return this.httpClient.get<{
+      products: Product[];
+    }>(`${this.BASE_URL}/category/${category}`);
+  }
 }

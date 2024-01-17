@@ -1,0 +1,37 @@
+.similar-items-body {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: max-content;
+}
+.similar-items-title {
+  margin-left: 300px;
+}
+
+.similar-items a {
+  text-decoration-line: none;
+}
+img {
+  width: 250px;
+  height: 250px;
+  padding: 4px;
+}
+.card {
+  margin: 0px 5px;
+  width: 250px;
+}
+
+.card-body {
+  padding: 2px;
+}
+.card-price {
+  font-size: 25px;
+
+  padding: 0px;
+  margin: 0px;
+}
+
+.card-title {
+  padding: 0px;
+  margin: 0px;
+}

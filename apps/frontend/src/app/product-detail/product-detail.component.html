@@ -75,9 +75,16 @@
               ><span>{{ cardService.description }}</span>
             </div>
           </div>
+          <hr />
+          <div class="card-about-this-item">
+            <ul>
+              <h6>about this item</h6>
+              <li *ngFor="let text of aboutThisItem">{{ text }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<i class="fa-solid fa-medal"></i>
+<app-similar-items [category]="product.category"></app-similar-items>

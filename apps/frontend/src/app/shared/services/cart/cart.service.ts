@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
-import { Cart, CartItem } from '../../models/cart';
 import { Subject } from 'rxjs';
+import { environment } from '../../../../environments/environment.development';
+import { ICart, ICartItem } from '../../interfaces/cart.interface';
 
 // TODO: use behaviour subject to store all the cart.
 @Injectable({
@@ -10,11 +10,11 @@ import { Subject } from 'rxjs';
 })
 export class CartService {
   BASE_URL = `${environment.apiBaseUrl}/carts`;
-  private _cart = new Subject<Cart | null>();
+  private _cart = new Subject<ICart | null>();
   cartSource$ = this._cart.asObservable();
   constructor(private httpClient: HttpClient) {}
   getCart(id: number) {
-    this.httpClient.get<Cart>(`${this.BASE_URL}/${id}`).subscribe((res) => {
+    this.httpClient.get<ICart>(`${this.BASE_URL}/${id}`).subscribe((res) => {
       this._cart.next(res);
     });
   }
@@ -22,7 +22,7 @@ export class CartService {
     return this._cart;
   }
   updateCart(cartId: string, product: { id: string; quantity: string }) {
-    return this.httpClient.put<CartItem>(`${this.BASE_URL}/${cartId}`, {
+    return this.httpClient.put<ICartItem>(`${this.BASE_URL}/${cartId}`, {
       merge: true,
       products: [
         {

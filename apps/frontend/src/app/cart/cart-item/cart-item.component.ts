@@ -2,8 +2,8 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartItem } from '../../models/cart';
 import { Product } from '../../models/product';
-import { CartService } from '../../services/cart/cart.service';
-import { ProductsService } from '../../services/products/products.service';
+import { CartService } from '../../shared/services/cart/cart.service';
+import { ProductsService } from '../../shared/services/products/products.service';
 
 @Component({
   selector: 'app-cart-item',

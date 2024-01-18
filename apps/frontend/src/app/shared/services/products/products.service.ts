@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Product } from '../../models/product';
-import { environment } from '../../../environments/environment.development';
-import { FilterByCategoryService } from './filters/filter-by-category.service';
 import { Subject } from 'rxjs';
+import { environment } from '../../../../environments/environment.development';
+import { IProduct } from '../../interfaces/product.interface';
+import { FilterByCategoryService } from './filters/filter-by-category.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService implements OnInit {
   BASE_URL = `${environment.apiBaseUrl}/products`;
-  private _products = new Subject<Product[]>();
+  private _products = new Subject<IProduct[]>();
   productsSource$ = this._products.asObservable();
   constructor(
     private httpClient: HttpClient,
@@ -28,7 +28,7 @@ export class ProductsService implements OnInit {
     if (this.categoriesService.selectedCategory !== null) {
       this.httpClient
         .get<{
-          products: Product[];
+          products: IProduct[];
         }>(
           `${this.BASE_URL}/category/${this.categoriesService.selectedCategory}`,
         )
@@ -37,16 +37,16 @@ export class ProductsService implements OnInit {
         });
     } else {
       this.httpClient
-        .get<{ products: Product[] }>(`${this.BASE_URL}`)
+        .get<{ products: IProduct[] }>(`${this.BASE_URL}`)
         .subscribe((res) => {
           this._products.next(res.products);
         });
     }
   }
   getProduct(id: string) {
-    return this.httpClient.get<Product>(`${this.BASE_URL}/${id}`);
+    return this.httpClient.get<IProduct>(`${this.BASE_URL}/${id}`);
   }
-  addProduct(productData: Product) {
+  addProduct(productData: IProduct) {
     return this.httpClient.post(`${this.BASE_URL}/add`, productData, {
       headers: {
         'Content-type': 'application/json',
@@ -58,7 +58,7 @@ export class ProductsService implements OnInit {
   }
   getProductByCategory(category: string) {
     return this.httpClient.get<{
-      products: Product[];
+      products: IProduct[];
     }>(`${this.BASE_URL}/category/${category}`);
   }
 }

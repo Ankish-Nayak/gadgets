@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../models/cart';
 import { ProductComponent } from '../product-list/product/product.component';
-import { CartService } from '../services/cart/cart.service';
+import { CartService } from '../shared/services/cart/cart.service';
 import { CartItemComponent } from './cart-item/cart-item.component';
 
 // TODO: make price label to stick when scroll up.

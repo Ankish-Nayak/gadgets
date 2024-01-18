@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductComponent } from './product/product.component';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from '../services/products/products.service';
+import { ProductsService } from '../shared/services/products/products.service';
 import { Product } from '../models/product';
-import { FilterByCategoryService } from '../services/products/filters/filter-by-category.service';
+import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
 
 @Component({
   selector: 'app-product-list',

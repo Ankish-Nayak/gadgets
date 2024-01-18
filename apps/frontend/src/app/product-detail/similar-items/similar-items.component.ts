@@ -5,7 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { ProductsService } from '../../services/products/products.service';
+import { ProductsService } from '../../shared/services/products/products.service';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';

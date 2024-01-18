@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductsService } from '../services/products/products.service';
+import { ProductsService } from '../shared/services/products/products.service';
 import { CommonModule } from '@angular/common';
-import { FilterByCategoryService } from '../services/products/filters/filter-by-category.service';
+import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { CartService } from '../services/cart/cart.service';
+import { CartService } from '../shared/services/cart/cart.service';
 
 // TODO: make variable to render amount or cart item to display on cart badge.
 // TODO: make separte component for showing complete detail about the product.

@@ -12,3 +12,7 @@ form {
   align-items: center;
   height: 80vh;
 }
+
+.login-form input {
+  margin: 5px 0px;
+}

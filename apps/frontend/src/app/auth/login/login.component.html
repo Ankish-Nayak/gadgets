@@ -5,7 +5,7 @@
       <input
         type="email"
         [autofocus]="true"
-        [class]="submitValidEmail()"
+        [class]="validEmail()"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
         formControlName="email"
@@ -18,12 +18,14 @@
       <input
         type="password"
         formControlName="password"
-        [class]="submitValidPassword()"
+        [class]="validPassword()"
         id="exampleInputPassword1"
         placeholder="Password"
       />
       <div class="invalid-feedback">{{ this.feedback.password }}</div>
     </div>
+
+    <a href="#" [routerLink]="['', 'signup']">Register</a>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>

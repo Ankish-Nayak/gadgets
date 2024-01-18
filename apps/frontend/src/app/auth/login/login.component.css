@@ -16,3 +16,9 @@ form {
 .login-form input {
   margin: 5px 0px;
 }
+
+.login-form a {
+  text-decoration-line: none;
+  align-self: center;
+  padding: 10px 0px;
+}

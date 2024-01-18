@@ -1,4 +1,4 @@
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -8,11 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { credentials } from './mock';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   };
   loginForm!: FormGroup;
   submitted: boolean = false;
-  constructor(private location: Location) {}
+  constructor() {}
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(this.values.email, [
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
     ) {
       this.submitted = false;
       console.log('loggedIn');
-      this.loginForm.patchValue({ email: '', password: '' });
+      this.loginForm.reset();
     } else {
       console.log('not loggedIn');
     }
@@ -96,7 +97,7 @@ export class LoginComponent implements OnInit {
   validEmail() {
     const email = this.email;
     let style = 'form-control';
-    if (email === null || email.value === '') {
+    if (email === null || !(email.touched && email.dirty)) {
       return style;
     } else {
       if (email.valid) {
@@ -111,7 +112,7 @@ export class LoginComponent implements OnInit {
   validPassword() {
     const password = this.password;
     let style = 'form-control';
-    if (password === null || password.value === '') {
+    if (password === null || !(password.touched && password.dirty)) {
       return style;
     } else {
       if (password.valid) {

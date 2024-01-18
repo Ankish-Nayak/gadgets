@@ -1,11 +1,11 @@
 <div class="cart">
-  <div
-    class="spinner-border text-primary"
-    role="status"
-    *ngIf="products.isLoading"
-  >
-    <span class="sr-only"></span>
-  </div>
+  <!-- <div -->
+  <!--   class="spinner-border text-primary" -->
+  <!--   role="status" -->
+  <!--   *ngIf="products.isLoading" -->
+  <!-- > -->
+  <!--   <span class="sr-only"></span> -->
+  <!-- </div> -->
   <ul class="list-group">
     <li class="list-group-item">
       <div class="d-flex container-fluid justify-content-between">
@@ -17,7 +17,7 @@
         <button class="btn btn-primary btn-sm">proceed</button>
       </div>
     </li>
-    <li class="list-group-item" *ngFor="let product of products.data">
+    <li class="list-group-item" *ngFor="let product of products">
       <app-cart-item [cartItem]="product"></app-cart-item>
     </li>
   </ul>

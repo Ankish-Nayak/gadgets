@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from '../models/product';
 import { ProductsService } from '../shared/services/products/products.service';
 import { aboutThisItem, cardOffers, cardServices } from './mock-data';
 import { SimilarItemsComponent } from './similar-items/similar-items.component';
+import { Product } from '../shared/models/product.model';
 
 @Component({
   selector: 'app-product-detail',

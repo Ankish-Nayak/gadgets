@@ -6,11 +6,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ProductsService } from '../../shared/services/products/products.service';
-import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { randomNumber } from '../randomNumber';
+import { Product } from '../../shared/models/product.model';
 
 @Component({
   selector: 'app-similar-items',
@@ -36,7 +36,7 @@ export class SimilarItemsComponent implements OnInit, OnChanges {
     this.productServices
       .getProductByCategory(this.category)
       .subscribe((res) => {
-        this.items = res.products;
+        this.items = res;
         console.log(this.category, res);
       });
   }
@@ -45,7 +45,7 @@ export class SimilarItemsComponent implements OnInit, OnChanges {
       .getProductByCategory(this.category)
       .subscribe((res) => {
         for (let i = 0; i < 4; ++i) {
-          for (let product of res.products) {
+          for (let product of res) {
             this.items.push(product);
           }
         }

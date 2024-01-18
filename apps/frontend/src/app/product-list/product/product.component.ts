@@ -2,7 +2,7 @@ import { CommonModule, CurrencyPipe, PercentPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from '../../models/product';
+import { Product } from '../../shared/models/product.model';
 
 // TODO: open shortpop when hovered over rating to show distribution of rating just like amazon hover link response
 

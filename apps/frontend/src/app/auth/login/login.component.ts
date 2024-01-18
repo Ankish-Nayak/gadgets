@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { credentials } from './mock';
 import { RouterLink } from '@angular/router';
+import { LoginFeedback } from '../../shared/models/feedback/loginFeedback';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,7 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   values = { email: '', password: '' };
-  feedback: { email: string; password: string } = {
-    email: '',
-    password: '',
-  };
+  feedback: LoginFeedback = new LoginFeedback('', '');
   loginForm!: FormGroup;
   submitted: boolean = false;
   constructor() {}

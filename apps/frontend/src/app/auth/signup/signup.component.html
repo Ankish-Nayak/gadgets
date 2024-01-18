@@ -4,11 +4,11 @@
       <label for="firstname">Firstname</label>
       <input
         type="text"
-        [autofocus]="true"
+        autofocus
         [class]="validFirstname()"
         id="firstname"
         aria-describedby="emailHelp"
-        formControlName="email"
+        formControlName="firstname"
         placeholder="Enter firstname"
       />
       <div class="invalid-feedback">{{ this.feedback.firstname }}</div>
@@ -23,13 +23,12 @@
         formControlName="lastname"
         placeholder="Enter lastname"
       />
-      <div class="invalid-feedback">{{ this.feedback.email }}</div>
+      <div class="invalid-feedback">{{ this.feedback.lastname }}</div>
     </div>
     <div class="form-group">
       <label for="email">Email address</label>
       <input
         type="email"
-        [autofocus]="true"
         [class]="validEmail()"
         id="email"
         aria-describedby="emailHelp"
@@ -49,6 +48,18 @@
       />
       <div class="invalid-feedback">{{ this.feedback.password }}</div>
     </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        [class]="validConfirmPassword()"
+        id="confirm-password"
+        placeholder="confirm password"
+      />
+      <div class="invalid-feedback">{{ this.feedback.confirmPassword }}</div>
+    </div>
+
     <a href="#" [routerLink]="['', 'login']">Already have account</a>
     <button type="submit" class="btn btn-primary">Signup</button>
   </form>

@@ -4,7 +4,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-
+//TODO: implement auth guard
 export const routes: Routes = [
   {
     path: '',

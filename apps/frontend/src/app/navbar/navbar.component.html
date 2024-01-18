@@ -98,7 +98,12 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li *ngFor="let profileLink of profileLinks">
-            <a class="dropdown-item" href="#">{{ profileLink }}</a>
+            <a
+              class="dropdown-item"
+              href="#"
+              (click)="handleProfile($event, profileLink)"
+              >{{ profileLink }}</a
+            >
           </li>
         </ul>
       </div>

@@ -10,6 +10,7 @@ import {
 import { credentials } from './mock';
 import { RouterLink } from '@angular/router';
 import { LoginFeedback } from '../../shared/models/feedback/loginFeedback';
+import { AuthService } from '../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   feedback: LoginFeedback = new LoginFeedback('', '');
   loginForm!: FormGroup;
   submitted: boolean = false;
-  constructor() {}
+  constructor(private authService: AuthService) {}
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(this.values.email, [
@@ -49,6 +50,9 @@ export class LoginComponent implements OnInit {
     ) {
       this.submitted = false;
       console.log('loggedIn');
+      this.authService.login(email, password).subscribe((res) => {
+        console.log(res);
+      });
       this.loginForm.reset();
     } else {
       console.log('not loggedIn');

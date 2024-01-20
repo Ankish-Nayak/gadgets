@@ -6,10 +6,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { LoginFeedback1 } from '../../shared/models/feedback/login1Feedback';
 import { AuthService } from '../../shared/services/auth/auth.service';
-import { users } from './mock';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login1',
@@ -23,8 +22,14 @@ export class Login1Component {
   feedback: LoginFeedback1 = new LoginFeedback1('', '');
   loginForm!: FormGroup;
   submitted: boolean = false;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
   ngOnInit(): void {
+    this.loginFormInit();
+  }
+  loginFormInit() {
     this.loginForm = new FormGroup({
       username: new FormControl(this.values.username, [
         Validators.required,
@@ -41,20 +46,10 @@ export class Login1Component {
     const { username, password } = this.loginForm.value;
     this.submitted = true;
     console.log(username, password);
-    if (
-      users.some((value) => {
-        return value.username === username && value.password === password;
-      })
-    ) {
-      this.submitted = false;
-      console.log('loggedIn');
-      this.authService.login(username, password).subscribe((res) => {
-        console.log(res);
-      });
-      this.loginForm.reset();
-    } else {
-      console.log('not loggedIn');
-    }
+    this.authService.login(username, password).subscribe((res) => {
+      console.log(res);
+      this.router.navigate(['']);
+    });
   }
   submitValidusername() {
     const username = this.username;

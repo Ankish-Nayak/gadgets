@@ -45,6 +45,12 @@ export class NavbarComponent implements OnInit {
         this.cartQuantity = res.products.length;
       }
     });
+    this.getMe();
+  }
+  getMe() {
+    this.authService.me().subscribe((res) => {
+      console.log(res);
+    });
   }
   fetchCategories(e: MouseEvent) {
     e.preventDefault();

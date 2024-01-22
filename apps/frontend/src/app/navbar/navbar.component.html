@@ -14,7 +14,11 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      *ngIf="isLoggedIn"
+    >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <!-- <li class="nav-item"> -->
         <!--   <a class="nav-link active" aria-current="page" href="#">Home</a> -->
@@ -77,6 +81,7 @@
         class="position-relative"
         [routerLink]="['cart']"
         aria-expanded="false"
+        *ngIf="isLoggedIn"
       >
         <i class="bi bi-cart"></i>
         <span
@@ -86,7 +91,7 @@
           <span class="visually-hidden">unread messages</span>
         </span>
       </a>
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="isLoggedIn">
         <a
           href="#"
           id="navbarDropdown"

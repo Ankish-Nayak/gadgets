@@ -1,11 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { ProductsService } from '../shared/services/products/products.service';
-import { CommonModule } from '@angular/common';
-import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { CartService } from '../shared/services/cart/cart.service';
 import { AuthService } from '../shared/services/auth/auth.service';
+import { CartService } from '../shared/services/cart/cart.service';
+import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
+import { ProductsService } from '../shared/services/products/products.service';
 
 // TODO: make variable to render amount or cart item to display on cart badge.
 // TODO: make separte component for showing complete detail about the product.
@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
   selectedCategory: string | null = null;
   profileLinks = ['profile', 'orders', 'delivered', 'track orders', 'logout'];
   cartQuantity: number = 0;
+  isLoggedIn: boolean = false;
   constructor(
     private productsService: ProductsService,
     public categoriesService: FilterByCategoryService,
@@ -39,17 +40,16 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService,
   ) {}
   ngOnInit(): void {
-    this.cartService.getCart(1);
-    this.cartService.cartSource$.subscribe((res) => {
+    this.authService.authenticatedMessage$.subscribe((res) => {
+      this.isLoggedIn = res;
       if (res) {
-        this.cartQuantity = res.products.length;
+        this.cartService.getCart(1);
+        this.cartService.cartSource$.subscribe((res1) => {
+          if (res1) {
+            this.cartQuantity = res1.products.length;
+          }
+        });
       }
-    });
-    this.getMe();
-  }
-  getMe() {
-    this.authService.me().subscribe((res) => {
-      console.log(res);
     });
   }
   fetchCategories(e: MouseEvent) {

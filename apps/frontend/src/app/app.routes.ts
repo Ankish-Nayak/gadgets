@@ -4,19 +4,17 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { Login1Component } from './auth/login1/login1.component';
+import { authGuard } from './shared/guards/auth.guard';
 //TODO: implement auth guard
 export const routes: Routes = [
   {
     path: '',
     component: ProductListComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
     component: Login1Component,
-  },
-  {
-    path: 'singup',
-    component: SignupComponent,
   },
   {
     path: 'signup',
@@ -25,9 +23,11 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [authGuard],
   },
 ];

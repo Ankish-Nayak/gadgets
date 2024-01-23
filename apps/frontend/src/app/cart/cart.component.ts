@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductComponent } from '../product-list/product/product.component';
 import { Cart } from '../shared/models/cart.model';
 import { CartItem } from '../shared/models/cartItem.model';
+import { AuthService } from '../shared/services/auth/auth.service';
 import { CartService } from '../shared/services/cart/cart.service';
 import { CartItemComponent } from './cart-item/cart-item.component';
 
@@ -18,15 +19,34 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 })
 export class CartComponent implements OnInit {
   products: CartItem[] = [];
+  isLoading: boolean = true;
   cart!: Cart;
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService,
+  ) {}
   ngOnInit(): void {
-    this.cartService.getCart(1);
-    this.cartService.cart.subscribe((res) => {
-      if (res !== null) {
-        this.cart = res;
-        this.products = res.products;
-      }
+    this.getUserCart();
+    this.subscribeToCart();
+  }
+  getUserCart() {
+    this.authService.me().subscribe((res) => {
+      this.cartService.getCart(res.id);
     });
+  }
+  subscribeToCart() {
+    this.cartService.cartSource$.subscribe(
+      (res) => {
+        if (res !== null) {
+          this.cart = res;
+          this.products = res.products;
+        }
+        this.isLoading = false;
+      },
+      (e) => {
+        this.isLoading = false;
+        console.log('error:', e);
+      },
+    );
   }
 }

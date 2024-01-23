@@ -32,6 +32,7 @@ export class AuthService {
         {
           username,
           password,
+          expiresInMins: 60,
         },
         {
           headers: { 'Content-Type': 'application/json' },

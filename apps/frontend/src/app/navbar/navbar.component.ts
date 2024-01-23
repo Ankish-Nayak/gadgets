@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { CartService } from '../shared/services/cart/cart.service';
@@ -20,14 +20,9 @@ import { ProductsService } from '../shared/services/products/products.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent implements OnInit {
-  categories: {
-    isLoading: boolean;
-    data: string[];
-  } = {
-    isLoading: true,
-    data: [],
-  };
+export class NavbarComponent implements OnInit, OnChanges {
+  categories: string[] = [];
+  isLoading: boolean = true;
   selectedCategory: string | null = null;
   profileLinks = ['profile', 'orders', 'delivered', 'track orders', 'logout'];
   cartQuantity: number = 0;
@@ -38,8 +33,15 @@ export class NavbarComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private authService: AuthService,
+    private route: ActivatedRoute,
   ) {}
   ngOnInit(): void {
+    this.subscribeToAuthenticatedMessage();
+  }
+  ngOnChanges(_changes: SimpleChanges): void {
+    console.log('a');
+  }
+  subscribeToAuthenticatedMessage() {
     this.authService.authenticatedMessage$.subscribe((res) => {
       this.isLoggedIn = res;
       if (res) {
@@ -54,12 +56,16 @@ export class NavbarComponent implements OnInit {
   }
   fetchCategories(e: MouseEvent) {
     e.preventDefault();
-    this.productsService.getAllProductsCategories().subscribe((res) => {
-      this.categories = {
-        isLoading: false,
-        data: ['all', ...res],
-      };
-    });
+    this.productsService.getAllProductsCategories().subscribe(
+      (res) => {
+        this.categories = ['all', ...res];
+        this.isLoading = false;
+      },
+      (e) => {
+        console.log('error: ', e);
+        this.isLoading = false;
+      },
+    );
   }
   handleCategory(event: MouseEvent, category: string) {
     event.preventDefault();

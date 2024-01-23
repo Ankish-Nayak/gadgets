@@ -45,18 +45,15 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <div
-                class="d-flex justify-content-center"
-                *ngIf="categories.isLoading"
-              >
+              <div class="d-flex justify-content-center" *ngIf="isLoading">
                 <div class="spinner-border spinner-border-sm" role="status">
                   <span class="sr-only"></span>
                 </div>
               </div>
             </li>
-            <div *ngIf="!categories.isLoading">
+            <div *ngIf="!isLoading">
               <li
-                *ngFor="let category of categories.data"
+                *ngFor="let category of categories"
                 (click)="handleCategory($event, category)"
               >
                 <a
@@ -69,11 +66,11 @@
             </div>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
-            >Disabled</a
-          >
-        </li>
+        <!-- <li class="nav-item"> -->
+        <!--   <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" -->
+        <!--     >Disabled</a -->
+        <!--   > -->
+        <!-- </li> -->
       </ul>
       <a
         href="#"

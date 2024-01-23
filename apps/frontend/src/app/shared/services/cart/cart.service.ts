@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment.development';
-import { ICart, ICartItem } from '../../interfaces/cart.interface';
+import { ICart, ICartItem, IGetRes } from '../../interfaces/cart.interface';
 import { CartItemAdapter } from '../../models/cartItem.model';
 
 // TODO: use behaviour subject to store all the cart.
@@ -19,9 +19,11 @@ export class CartService {
     private adapter: CartItemAdapter,
   ) {}
   getCart(id: number) {
-    this.httpClient.get<ICart>(`${this.BASE_URL}/${id}`).subscribe((res) => {
-      this._cart.next(res);
-    });
+    this.httpClient
+      .get<IGetRes>(`${this.BASE_URL}/user/${id}`)
+      .subscribe((res) => {
+        this._cart.next(res.carts[0]);
+      });
   }
   get cart() {
     return this._cart.pipe(

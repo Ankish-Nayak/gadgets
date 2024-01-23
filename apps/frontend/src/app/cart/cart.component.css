@@ -6,3 +6,8 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.cart-total {
+  position: sticky;
+  top: 50px;
+  z-index: 100;
+}

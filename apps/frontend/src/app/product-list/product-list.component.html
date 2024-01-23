@@ -1,14 +1,10 @@
 <div class="products">
-  <div
-    class="spinner-border text-primary"
-    role="status"
-    *ngIf="products.isLoading"
-  >
+  <div class="spinner-border text-primary" role="status" *ngIf="this.isLoading">
     <span class="sr-only"></span>
   </div>
   <app-product
-    *ngFor="let product of products.data"
+    *ngFor="let product of products; let i = index"
     [product]="product"
-    [purchasedCount]="getRandomPurchasedCount()"
+    [purchasedCount]="this.purchasedCount[i]"
   ></app-product>
 </div>

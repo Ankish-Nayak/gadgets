@@ -10,9 +10,9 @@
         <div>
           <h6 class="card-title">
             <a href="#" [routerLink]="['', 'product', item.id]">{{
-              item.description.length > 70
+              item.description.length > 40
                 ? item.description
-                : item.description.substring(0, 70) + "..."
+                : item.description.substring(0, 40) + "..."
             }}</a>
           </h6>
         </div>

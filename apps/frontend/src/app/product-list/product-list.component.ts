@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductComponent } from './product/product.component';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from '../shared/services/products/products.service';
-import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../shared/models/product.model';
+import { FilterByCategoryService } from '../shared/services/products/filters/filter-by-category.service';
+import { ProductsService } from '../shared/services/products/products.service';
+import { ProductComponent } from './product/product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -13,13 +13,9 @@ import { Product } from '../shared/models/product.model';
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  products: {
-    isLoading: boolean;
-    data: Product[];
-  } = {
-    isLoading: true,
-    data: [],
-  };
+  products: Product[] = [];
+  purchasedCount: string[] = [];
+  isLoading: boolean = true;
   constructor(
     private productsService: ProductsService,
     private categoriesService: FilterByCategoryService,
@@ -27,19 +23,36 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts();
-    this.categoriesService.categoryMessage$.subscribe((res) => {
-      console.log(res);
-      this.getProducts();
-    });
+    this.categoriesService.categoryMessage$.subscribe(
+      (res) => {
+        console.log(res);
+        this.getProducts();
+      },
+      (e) => {
+        console.log(e);
+      },
+      () => {
+        this.isLoading = false;
+      },
+    );
+  }
+  populatePurchasedCount() {
+    for (let i = 0; i < this.products.length; ++i) {
+      this.purchasedCount.push(this.getRandomPurchasedCount());
+    }
   }
   getProducts() {
-    this.productsService.products.subscribe((res) => {
-      this.products = {
-        isLoading: false,
-        data: res,
-      };
-      console.log(res);
-    });
+    this.productsService.products.subscribe(
+      (res) => {
+        this.products = res;
+        this.isLoading = false;
+        this.populatePurchasedCount();
+      },
+      (e) => {
+        this.isLoading = false;
+        console.log('Error: ', e);
+      },
+    );
   }
 
   getRandomPurchasedCount() {
